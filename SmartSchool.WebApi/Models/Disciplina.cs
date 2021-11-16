@@ -19,6 +19,8 @@ namespace SmartSchool.WebAPI.Models
 
         public int ProfessorId { get; set; }
 
+         public Professor Professor { get; set; }
+
         public IEnumerable<AlunoDisciplina> AlunosDisciplinas { get; set; }
     }
 }
