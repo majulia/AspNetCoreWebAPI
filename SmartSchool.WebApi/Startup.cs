@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SmartSchool.WebApi.Data;
+using SmartSchool.WebAPI.Data;
 
 namespace SmartSchool.WebApi
 {
@@ -31,19 +33,14 @@ namespace SmartSchool.WebApi
                 context => context.UseSqlite(Configuration.GetConnectionString("MySqlite"))
             );
 
-            // services.AddSingleton<IRepository, Repository>();
-            services.AddScoped<IRepository, Repository>();
-
-            services.AddControllers()
+             services.AddControllers()
                 .AddNewtonsoftJson(opt 
                         => opt.SerializerSettings.ReferenceLoopHandling = 
                         Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            // services.AddSwaggerGen(c =>
-            // {
-            //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "SmartSchool.WebApi", Version = "v1" });
-            // });
-            
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());                
+
+            services.AddScoped<IRepository, Repository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
