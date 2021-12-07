@@ -1,6 +1,6 @@
 using System;
 
-namespace SmartSchool.WebApi.Helpers
+namespace SmartSchool.WebAPI.Helpers
 {
     public static class DateTimeExtensions
     {

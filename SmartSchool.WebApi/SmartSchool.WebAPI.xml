@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmartSchool.WebAPI</name>
+    </assembly>
+    <members>
+        <member name="T:SmartSchool.WebAPI.v1.Controllers.AlunoController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SmartSchool.WebAPI.v1.Controllers.AlunoController.#ctor(SmartSchool.WebAPI.Data.IRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="repo"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:SmartSchool.WebAPI.v1.Controllers.AlunoController.Get">
+            <summary>
+            Métodos responsável por retornar todos os alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.v1.Controllers.AlunoController.GetRegister">
+            <summary>
+            Métodos responsável por retornar único aluno
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.v1.Controllers.AlunoController.GetById(System.Int32)">
+            <summary>
+            Responsável por retornar pelo Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.v1.Controllers.AlunoController.Post(SmartSchool.WebAPI.v1.Dtos.AlunoRegistrarDto)">
+            <summary>
+            Cadastrar aluno
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.v1.Controllers.AlunoController.Put(System.Int32,SmartSchool.WebAPI.v1.Dtos.AlunoRegistrarDto)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.v1.Controllers.AlunoController.Patch(System.Int32,SmartSchool.WebAPI.v1.Dtos.AlunoRegistrarDto)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.WebAPI.v1.Controllers.AlunoController.Delete(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SmartSchool.WebAPI.v1.Dtos.AlunoDto.Nome">
+            <summary>
+            Primeiro nome e Sobrenome do Aluno
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -5,13 +5,15 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartSchool.WebAPI.Dtos;
+using SmartSchool.WebAPI.v1.Dtos;
 using SmartSchool.WebAPI.Models;
-using SmartSchool.WebApi.Data;
+using SmartSchool.WebAPI.Data;
 
-namespace SmartSchool.WebApi.Controllers
+namespace SmartSchool.WebAPI.v1.Controllers
 {
     [ApiController]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiversion}/[controller]")]
     [Route("api/[controller]")]
     public class ProfessorController : ControllerBase
     {

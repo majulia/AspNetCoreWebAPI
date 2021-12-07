@@ -5,24 +5,40 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartSchool.WebAPI.Models;
-using SmartSchool.WebAPI.Dtos;
-using SmartSchool.WebApi.Data;
+using SmartSchool.WebAPI.v1.Dtos;
+using SmartSchool.WebAPI.Data;
 using AutoMapper;
 
-namespace SmartSchool.WebApi.Controllers
+namespace SmartSchool.WebAPI.v1.Controllers
 {
+  /// <summary>
+  /// 
+  /// </summary>
   [ApiController]
-  [Route("api/[controller]")]
+  [ApiVersion("1.0")]
+  [Route("api/v{version:apiversion}/[controller]")]
   public class AlunoController : ControllerBase
   {
     public readonly IRepository _repo;
     private readonly IMapper _mapper;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="repo"></param>
+    /// <param name="mapper"></param>
 
     public AlunoController(IRepository repo, IMapper mapper)
     {
       _mapper = mapper;
       _repo = repo;
     }
+
+
+    /// <summary>
+    /// Métodos responsável por retornar todos os alunos
+    /// </summary>
+    /// <returns></returns>
 
   [HttpGet]
     public IActionResult Get()
@@ -31,11 +47,23 @@ namespace SmartSchool.WebApi.Controllers
       return Ok(_mapper.Map<IEnumerable<AlunoDto>>(alunos));
     }
 
-    [HttpGet("getRegister")]
+     /// <summary>
+     /// Métodos responsável por retornar único aluno
+     /// </summary>
+     /// <returns></returns>
+
+        [HttpGet("getRegister")]
     public IActionResult GetRegister()
     {
       return Ok(new AlunoRegistrarDto());
     }
+
+
+    /// <summary>
+    /// Responsável por retornar pelo Id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
 
     // api/aluno/1
     [HttpGet("{id}")]
@@ -48,7 +76,11 @@ namespace SmartSchool.WebApi.Controllers
 
       return Ok(alunoDto);
     }
-
+        /// <summary>
+        /// Cadastrar aluno
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
     // api/aluno
     [HttpPost]
 
@@ -64,6 +96,14 @@ namespace SmartSchool.WebApi.Controllers
       }
       return BadRequest("aluno não cadastrado");
     }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="model"></param>
+    /// <returns></returns>
 
     // api/aluno
     [HttpPut("{id}")]
@@ -84,6 +124,13 @@ namespace SmartSchool.WebApi.Controllers
 
     }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
+
     [HttpPatch("{id}")]
     public IActionResult Patch(int id, AlunoRegistrarDto  model)
     {
@@ -100,6 +147,12 @@ namespace SmartSchool.WebApi.Controllers
 
       return BadRequest("Não possível atualizar.");
     }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
 
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
