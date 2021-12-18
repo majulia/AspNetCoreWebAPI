@@ -8,6 +8,7 @@ using SmartSchool.WebAPI.Models;
 using SmartSchool.WebAPI.v1.Dtos;
 using SmartSchool.WebAPI.Data;
 using AutoMapper;
+using SmartSchool.WebApi.Helpers;
 
 namespace SmartSchool.WebAPI.v1.Controllers
 {
@@ -35,16 +36,24 @@ namespace SmartSchool.WebAPI.v1.Controllers
     }
 
 
+ //localhost:5000/api/v1/aluno?pageNumber=1&pageSize=5&ativo=1
+ 
     /// <summary>
     /// Métodos responsável por retornar todos os alunos
     /// </summary>
     /// <returns></returns>
 
   [HttpGet]
-    public IActionResult Get()
+    public async Task<IActionResult> Get([FromQuery]PageParams pageParams)
     {
-      var alunos = _repo.GetAllAlunos(true);
-      return Ok(_mapper.Map<IEnumerable<AlunoDto>>(alunos));
+      var alunos = await _repo.GetAllAlunosAsync(pageParams, true);
+
+      var alunosResult = _mapper.Map<IEnumerable<AlunoDto>>(alunos);
+
+      Response.AddPagination(alunos.CurrentPage, alunos.PageSize, alunos.TotalCount, alunos.TotalPages);
+
+
+      return Ok(alunosResult);
     }
 
      /// <summary>
