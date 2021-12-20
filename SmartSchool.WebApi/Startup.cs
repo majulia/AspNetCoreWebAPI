@@ -31,8 +31,11 @@ namespace SmartSchool.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SmartContext>(
-                context => context.UseSqlite(Configuration.GetConnectionString("MySqlite"))
+            services.AddCors(); 
+            services.AddDbContext<SmartContext>(options => options.UseMySql(Configuration.GetConnectionString("MySqlConnection"))
+
+            // services.AddDbContext<SmartContext>(
+            //     context => context.UseMySql(Configuration.GetConnectionString("MySqlConnection"))
             );
 
              services.AddControllers()

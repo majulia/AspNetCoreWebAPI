@@ -39,7 +39,7 @@ namespace SmartSchool.WebAPI.v1.Controllers
  //localhost:5000/api/v1/aluno?pageNumber=1&pageSize=5&ativo=1
  
     /// <summary>
-    /// Métodos responsável por retornar todos os alunos
+    /// Responsável por retornar dados 
     /// </summary>
     /// <returns></returns>
 
@@ -57,7 +57,7 @@ namespace SmartSchool.WebAPI.v1.Controllers
     }
 
      /// <summary>
-     /// Métodos responsável por retornar único aluno
+     /// Responsável por retornar único aluno
      /// </summary>
      /// <returns></returns>
 
