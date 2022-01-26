@@ -19,8 +19,9 @@ Web API criada no curso Crie uma Web API com Asp .NET Core + EF Core + Docker na
 
 ## #Tecnologias
 
-- Asp .Net Core
-- Microsoft Entity Framework 3.1
+- Asp .Net Core 3.1
+- Microsoft Entity Framework 
+- MySQL
 
 
 ## Pré Requisitos
