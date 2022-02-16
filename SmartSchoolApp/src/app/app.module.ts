@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AlunosComponent } from './components/alunos/alunos.component';
+import { ProfessoresAlunosComponent } from './components/alunos/professores-alunos/professores-alunos.component';
 import { ProfessoresComponent } from './components/professores/professores.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -20,10 +21,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     AlunosComponent,
+    ProfessoresAlunosComponent,
     ProfessoresComponent,
     PerfilComponent,
     DashboardComponent,

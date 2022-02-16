@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>SmartSchool.WebAPI</name>
+        <name>SmartSchool.WebApi</name>
     </assembly>
     <members>
         <member name="T:SmartSchool.WebAPI.v1.Controllers.AlunoController">
@@ -18,13 +18,13 @@
         </member>
         <member name="M:SmartSchool.WebAPI.v1.Controllers.AlunoController.Get(SmartSchool.WebApi.Helpers.PageParams)">
             <summary>
-            Métodos responsável por retornar todos os alunos
+            Responsável por retornar dados 
             </summary>
             <returns></returns>
         </member>
         <member name="M:SmartSchool.WebAPI.v1.Controllers.AlunoController.GetRegister">
             <summary>
-            Métodos responsável por retornar único aluno
+            Responsável por retornar único aluno
             </summary>
             <returns></returns>
         </member>

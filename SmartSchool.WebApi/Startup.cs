@@ -89,7 +89,7 @@ namespace SmartSchool.WebApi
 
                 options.IncludeXmlComments(xmlCommentsFullPath);
             });
-
+            services.AddCors();
         }
 
 
@@ -104,6 +104,7 @@ namespace SmartSchool.WebApi
             // app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(x => x.AllowAnyOrigin(). AllowAnyMethod().AllowAnyHeader());
 
             app.UseSwagger()
             .UseSwaggerUI(options => {
@@ -120,6 +121,7 @@ namespace SmartSchool.WebApi
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

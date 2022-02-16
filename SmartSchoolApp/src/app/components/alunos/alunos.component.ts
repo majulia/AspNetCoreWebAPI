@@ -61,7 +61,8 @@ export class AlunosComponent implements OnInit, OnDestroy {
         this.modalRef = this.modalService.show(template);
       }, (error: any) => {
         this.toastr.error(`erro: ${error}`);
-        console.log(error);
+        console.log(error.message);
+        this.spinner.hide();
       }, () => this.spinner.hide()
     );
   }
@@ -103,6 +104,7 @@ export class AlunosComponent implements OnInit, OnDestroy {
           }, (error: any) => {
             this.toastr.error(`Erro: Aluno não pode ser salvo!`);
             console.error(error);
+            this.spinner.hide();
           }, () => this.spinner.hide()
         );
 
@@ -110,7 +112,7 @@ export class AlunosComponent implements OnInit, OnDestroy {
   }
 
   carregarAlunos() {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const alunoId = +this.route.snapshot.paramMap.get('id');
 
     this.spinner.show();
     this.alunoService.getAll()
@@ -118,22 +120,33 @@ export class AlunosComponent implements OnInit, OnDestroy {
       .subscribe((alunos: Aluno[]) => {
         this.alunos = alunos;
 
-        if (id > 0) {
-          this.alunoSelect(this.alunos.find(aluno => aluno.id === id));
+        if (alunoId > 0) {
+          this.alunoSelect(alunoId);
         }
 
-        this.toastr.success('Alunos foram carregado com Sucesso!');
+        this.toastr.success('Alunos foram carregados com Sucesso!');
       }, (error: any) => {
         this.toastr.error('Alunos não carregados!');
         console.log(error);
+        this.spinner.hide();
       }, () => this.spinner.hide()
     );
   }
 
-  alunoSelect(aluno: Aluno) {
-    this.modeSave = 'put';
-    this.alunoSelecionado = aluno;
-    this.alunoForm.patchValue(aluno);
+  alunoSelect(alunoId) {
+    this.modeSave = 'patch';
+    this.alunoService.getById(alunoId).subscribe(
+      (alunoReturn) => {
+        this.alunoSelecionado = alunoReturn;
+        this.alunoForm.patchValue(this.alunoSelecionado);
+      },
+      (error) => {
+        this.toastr.error('Alunos não carregados!');
+        console.error(error);
+        this.spinner.hide();
+      },
+      () => this.spinner.hide()
+    );
   }
 
   voltar() {
