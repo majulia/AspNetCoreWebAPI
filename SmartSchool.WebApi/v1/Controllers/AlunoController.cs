@@ -61,6 +61,19 @@ namespace SmartSchool.WebAPI.v1.Controllers
      /// </summary>
      /// <returns></returns>
 
+    [HttpGet("ByDisciplina/{id}")]
+    public async Task<IActionResult> GetByDisciplinaId(int id)
+    {
+      var result = await _repo.GetAllAlunosByDisciplinaIdAsync(id, false);
+
+      return Ok(result);
+    }
+
+     /// <summary>
+     /// Responsável por retornar único aluno
+     /// </summary>
+     /// <returns></returns>
+
         [HttpGet("getRegister")]
     public IActionResult GetRegister()
     {
@@ -152,6 +165,28 @@ namespace SmartSchool.WebAPI.v1.Controllers
       if (_repo.SaveChanges())
       {
         return Created($"/api/aluno/{model.Id}", _mapper.Map<AlunoDto>(aluno));
+      }
+
+      return BadRequest("Não possível atualizar.");
+    }
+
+        
+    // api/aluno/{id}/trocarEstado
+    [HttpPatch("{id}/trocarEstado")]
+    public IActionResult trocarEstado(int id, TrocaEstadoDto trocaEstado)
+    {
+      var aluno = _repo.GetAlunoById(id);
+
+      if (aluno == null) return BadRequest("Aluno não encontrado");
+
+      aluno.Ativo = trocaEstado.Estado;
+      
+      _repo.Update(aluno);
+      if (_repo.SaveChanges())
+      {
+        var msg = aluno.Ativo ? "ativado" : "desativado";
+
+        return Ok(new  { message = $"Aluno {msg} com sucesso!"});
       }
 
       return BadRequest("Não possível atualizar.");

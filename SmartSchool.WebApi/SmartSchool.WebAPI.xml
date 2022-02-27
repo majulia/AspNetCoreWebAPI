@@ -22,6 +22,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:SmartSchool.WebAPI.v1.Controllers.AlunoController.GetByDisciplinaId(System.Int32)">
+            <summary>
+            Responsável por retornar único aluno
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:SmartSchool.WebAPI.v1.Controllers.AlunoController.GetRegister">
             <summary>
             Responsável por retornar único aluno

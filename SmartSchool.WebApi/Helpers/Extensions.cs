@@ -9,19 +9,19 @@ namespace SmartSchool.WebApi.Helpers
         public static void AddPagination(
             this HttpResponse response,
             int currentPage,
-            int itemsPage,
+            int itemsPerPage,
             int totalItems,
             int totalCount
         )
         {
-            var paginationHeader = new PaginationHeader(currentPage, itemsPage, totalItems, totalCount);
+            var paginationHeader = new PaginationHeader(currentPage, itemsPerPage, totalItems, totalCount);
 
             var camelCaseFormatter = new JsonSerializerSettings();
 
             camelCaseFormatter.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             response.Headers.Add("Pagination", JsonConvert.SerializeObject(paginationHeader, camelCaseFormatter));
-            response.Headers.Add("Access-Control-Expose-Header", "Pagination");
+            response.Headers.Add("Access-Control-Expose-Headers", "Pagination");
         }
     }
 }

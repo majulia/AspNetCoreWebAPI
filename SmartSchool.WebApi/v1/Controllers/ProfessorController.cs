@@ -43,7 +43,7 @@ namespace SmartSchool.WebAPI.v1.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var professor = _repo.GetProfessorByID(id, false);
+            var professor = _repo.GetProfessorByID(id, true);
             if (professor == null)
                 return BadRequest("Professor não encontrado");
 
@@ -55,7 +55,7 @@ namespace SmartSchool.WebAPI.v1.Controllers
         public IActionResult GetByAluno(int alunoId)
         {
  
-            var professores = _repo.GetProfessoresByAluno(alunoId, false);
+            var professores = _repo.GetProfessoresByAluno(alunoId, true);
             if (professores == null)
                 return BadRequest("Professores não encontrado");
 

@@ -5,10 +5,6 @@ namespace SmartSchool.WebAPI.Models
 {
   public class Aluno
   {
-    public Aluno()
-    {
-    }
-
     public Aluno(int id, int matricula, string nome, string sobrenome, string telefone, DateTime dataNasc)
     {
       this.Id = id;
